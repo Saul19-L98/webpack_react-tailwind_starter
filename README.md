@@ -22,7 +22,7 @@ npm run build
 npm run dev
 ```
 
-## Webpack & Tailwind CSS Setup
+## ⛏🖼 Webpack & Tailwind CSS Setup
 
 ### Create your package.json
 
