@@ -1,4 +1,4 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -9,9 +9,7 @@ module.exports = {
 		filename:'bundle.js',
 	},
 	devServer: {
-		static: {
-			directory: path.resolve(__dirname, 'dist'),
-		},
+		watchFiles: ["src/**/*"],
 		port: 3000,
 		open: true,
 		hot: true,
@@ -25,14 +23,25 @@ module.exports = {
 				include: path.resolve(__dirname, 'src'),
 				use: ['style-loader', 'css-loader', 'postcss-loader'],
 			},
+			{
+				type: "asset",
+				test: /\.(png|svg|jpg|gif)$/i,
+				use:[
+					{
+						loader:'file-loader',
+						options:{
+							name: '[name].[ext]',
+							outputPath:'img/',
+							useRelativePath:true,
+						}
+					}
+				]
+			}
 		],
 	},
 	plugins:[
-		new HtmlWebpackPlugin({
-			template: './src/index.html',
-			filename: 'index.html',
-			inject: 'head',
-			scriptLoading: 'defer'
+		new CopyPlugin({
+			patterns:[{from: "src/index.html", to: "index.html"}],
 		})
 	]
 }
