@@ -24,18 +24,11 @@ module.exports = {
 				use: ['style-loader', 'css-loader', 'postcss-loader'],
 			},
 			{
-				type: "asset",
 				test: /\.(png|svg|jpg|gif)$/i,
-				use:[
-					{
-						loader:'file-loader',
-						options:{
-							name: '[hash].[ext]',
-							outputPath:'img/',
-							useRelativePath:true,
-						}
-					}
-				]
+				type: "asset/resource",
+				generator:{
+					filename:"assets/img/[hash][ext]"
+				}
 			}
 		],
 	},
