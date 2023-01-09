@@ -21,7 +21,7 @@
     "css-loader": "^6.7.2",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
-    "postcss": "^8.4.17",
+    "postcss": "^8.4.21",
     "postcss-loader": "^7.0.2",
     "postcss-preset-env": "^7.8.3",
     "react": "^18.2.0",
